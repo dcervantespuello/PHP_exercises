@@ -24,13 +24,5 @@ function toRna(string $dna): string
         throw new \InvalidArgumentException('Invalid DNA strand.');
     }
 
-    $complements = ['G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U'];
-    $nucleotides = str_split($dna);
-    $rna = '';
-
-    foreach ($nucleotides as $nucleotide) {
-        $rna .= $complements[$nucleotide];
-    }
-
-    return $rna;
+    return strtr($dna, 'GCTA', 'CGAU');
 }
